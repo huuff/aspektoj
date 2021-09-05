@@ -13,6 +13,9 @@
         <maven.compiler.target>11</maven.compiler.target>
         <aspectj.version>1.9.7</aspectj.version>
         <junit.version>5.7.2</junit.version>
+        <java.version>11</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
@@ -50,9 +53,9 @@
                 <artifactId>aspectj-maven-plugin</artifactId>
                 <version>1.14.0</version>
                 <configuration>
-                    <complianceLevel>11</complianceLevel>
-                    <source>11</source>
-                    <target>11</target>
+                    <complianceLevel>${java.version}</complianceLevel>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
                 <executions>
                     <execution>
@@ -69,9 +72,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <release>11</release>
-                    <source>11</source>
-                    <target>11</target>
+                    <release>${java.version}</release>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
 
