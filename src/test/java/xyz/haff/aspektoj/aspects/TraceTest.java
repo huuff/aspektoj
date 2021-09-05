@@ -1,6 +1,7 @@
 package xyz.haff.aspektoj.aspects;
 
 import org.junit.jupiter.api.Test;
+import xyz.haff.aspektoj.TestUtils;
 import xyz.haff.aspektoj.annotations.Traced;
 
 import java.io.ByteArrayOutputStream;
@@ -17,12 +18,12 @@ class TraceTest {
 
     @Test
     void testTraced() throws InterruptedException {
-        var testOut = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(testOut));
+        var testOut = TestUtils.redirectStdout();
 
         tracedMethod();
 
-        assertEquals("Calling void xyz.haff.aspektoj.aspects.TraceTest.tracedMethod()...\n" +
-                "Test\n", testOut.toString());
+        assertEquals(
+                "Calling void xyz.haff.aspektoj.aspects.TraceTest.tracedMethod()...\nTest\n",
+                testOut.toString());
     }
 }
