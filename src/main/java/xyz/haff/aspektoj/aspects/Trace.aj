@@ -1,8 +1,8 @@
-package xyz.haf.aspektoj.aspects;
+package xyz.haff.aspektoj.aspects;
 
 public aspect Trace {
 
-    before(): call(@xyz.haf.aspektoj.annotations.Traced * *.*(..)) {
+    before(): call(@xyz.haff.aspektoj.annotations.Traced * *.*(..)) {
         System.out.println("Calling " + thisJoinPoint.getSignature() + "...");
     }
 }

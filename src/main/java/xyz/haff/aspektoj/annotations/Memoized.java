@@ -1,4 +1,4 @@
-package xyz.haf.aspektoj.annotations;
+package xyz.haff.aspektoj.annotations;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

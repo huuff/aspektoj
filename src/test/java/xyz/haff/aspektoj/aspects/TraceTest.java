@@ -1,7 +1,7 @@
-package xyz.haf.aspektoj.aspects;
+package xyz.haff.aspektoj.aspects;
 
 import org.junit.jupiter.api.Test;
-import xyz.haf.aspektoj.annotations.Traced;
+import xyz.haff.aspektoj.annotations.Traced;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -22,7 +22,7 @@ class TraceTest {
 
         tracedMethod();
 
-        assertEquals("Calling void xyz.haf.aspektoj.aspects.TraceTest.tracedMethod()...\n" +
+        assertEquals("Calling void xyz.haff.aspektoj.aspects.TraceTest.tracedMethod()...\n" +
                 "Test\n", testOut.toString());
     }
 }
