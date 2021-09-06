@@ -4,7 +4,7 @@
 
     <groupId>xyz.haff</groupId>
     <artifactId>aspektoj</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.5</version>
     <packaging>jar</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
@@ -30,7 +30,7 @@
         <connection>scm:git:git://github.com/huuff/aspektoj.git</connection>
         <developerConnection>scm:git:git@github.com:huuff/aspektoj.git</developerConnection>
         <url>http://github.com/huuff/aspektoj/tree/master</url>
-      <tag>aspektoj-0.0.1</tag>
+      <tag>aspektoj-0.0.5</tag>
   </scm>
 
     <distributionManagement>
