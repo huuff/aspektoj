@@ -5,6 +5,7 @@
 * Memoization (Guava)
 * Cache (Guava)
 * Logging methods that take and return `String`
+* Use `gradle`
 
 # Maybe? Just for practice
 * Security, authentication & authorization
