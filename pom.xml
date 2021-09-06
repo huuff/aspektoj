@@ -7,6 +7,32 @@
     <groupId>xyz.haff</groupId>
     <artifactId>aspektoj</artifactId>
     <version>0.0.1</version>
+    <packaging>jar</packaging>
+
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Just some aspectj aspects I needed</description>
+    <url>https://github.com/huuff/aspektoj</url>
+
+    <licenses>
+        <license>
+            <name>WTFPL - Do What The Fuck You Want To Public License</name>
+            <url>http://www.wtfpl.net/</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Haf</name>
+            <email>haf@protonmail.ch</email>
+            <organizationUrl>https://github.com/huuff</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/huuff/aspektoj.git</connection>
+        <developerConnection>scm:git:ssh://github.com:huuff/aspektoj.git</developerConnection>
+        <url>http://github.com/huuff/aspektoj/tree/master</url>
+    </scm>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
