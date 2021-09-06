@@ -1,3 +1,5 @@
+* Actually check whether my artifact is deployed to central, I'm unsure about it...
+
 # Tasks
 * Tracing and benchmarking with logger instead of `stdout`
 * Retry
