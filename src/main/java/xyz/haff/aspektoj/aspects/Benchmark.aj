@@ -20,11 +20,11 @@ public aspect Benchmark {
         // HACK to use `DateTimeFormatter`
         var fromMidnight = LocalTime.of(0, 0).plus(duration);
 
-        var elapsedMillis = elapsedNanos / 1_000_000;
+        var elapsedMillis = elapsedNanos / 1000000;
         DateTimeFormatter formatter = null;
         if (elapsedMillis < 1000)
             formatter = MILLIS_FORMATTER;
-        else if (elapsedMillis < 60_000)
+        else if (elapsedMillis < 60000)
             formatter = SECONDS_FORMATTER;
         else
             formatter = MINUTES_FORMATTER;
