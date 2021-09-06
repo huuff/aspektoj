@@ -28,7 +28,7 @@
 
     <scm>
         <connection>scm:git:git://github.com/huuff/aspektoj.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:huuff/aspektoj.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:huuff/aspektoj.git</developerConnection>
         <url>http://github.com/huuff/aspektoj/tree/master</url>
       <tag>aspektoj-0.0.1</tag>
   </scm>
