@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>xyz.haff</groupId>
     <artifactId>aspektoj</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
@@ -32,7 +30,8 @@
         <connection>scm:git:git://github.com/huuff/aspektoj.git</connection>
         <developerConnection>scm:git:ssh://github.com:huuff/aspektoj.git</developerConnection>
         <url>http://github.com/huuff/aspektoj/tree/master</url>
-    </scm>
+      <tag>aspektoj-0.0.1</tag>
+  </scm>
 
     <distributionManagement>
         <snapshotRepository>
