@@ -4,7 +4,7 @@
 
     <groupId>xyz.haff</groupId>
     <artifactId>aspektoj</artifactId>
-    <version>0.0.6-SNAPSHOT</version>
+    <version>0.0.7</version>
     <packaging>jar</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
@@ -30,7 +30,6 @@
         <connection>scm:git:git://github.com/huuff/aspektoj.git</connection>
         <developerConnection>scm:git:git@github.com:huuff/aspektoj.git</developerConnection>
         <url>http://github.com/huuff/aspektoj/tree/master</url>
-      <tag>aspektoj-0.0.1</tag>
   </scm>
 
     <distributionManagement>
@@ -106,18 +105,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>3.0.0-M4</version>
-                <configuration>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <useReleaseProfile>false</useReleaseProfile>
-                    <releaseProfiles>release</releaseProfiles>
-                    <goals>deploy</goals>
-                </configuration>
             </plugin>
         </plugins>
     </build>
