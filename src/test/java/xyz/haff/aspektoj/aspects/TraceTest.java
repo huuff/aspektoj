@@ -4,10 +4,7 @@ import org.junit.jupiter.api.Test;
 import xyz.haff.aspektoj.TestUtils;
 import xyz.haff.aspektoj.annotations.Traced;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TraceTest {
 

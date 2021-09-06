@@ -1,7 +1,5 @@
 package xyz.haff.aspektoj;
 
-// TODO: Lombok's `@UtilityClass`
-
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;

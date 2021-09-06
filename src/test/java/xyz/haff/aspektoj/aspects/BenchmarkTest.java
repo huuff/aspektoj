@@ -8,17 +8,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BenchmarkTest {
 
-    // TODO: Lombok's `@SneakyThrows`
     @Benchmarked
-    public void benchmarkedMethod() {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    public void benchmarkedMethod() { }
 
-    // HACK: Fragile, maybe use some epsilon?
     @Test
     void testBenchmarked() {
         var testOut = TestUtils.redirectStdout();
@@ -26,7 +18,7 @@ class BenchmarkTest {
         benchmarkedMethod();
 
         assertEquals(
-                "BenchmarkTest.benchmarkedMethod() took 500ms\n",
+                "BenchmarkTest.benchmarkedMethod() took 000ms\n",
                 testOut.toString()
         );
     }
