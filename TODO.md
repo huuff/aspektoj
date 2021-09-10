@@ -1,4 +1,4 @@
-* Actually check whether my artifact is deployed to central, I'm unsure about it...
+* Do a maven central release
 
 # Tasks
 * Tracing and benchmarking with logger instead of `stdout`
