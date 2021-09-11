@@ -1,5 +1,3 @@
-* Do a maven central release
-
 # Tasks
 * Tracing and benchmarking with logger instead of `stdout`
 * Retry
