@@ -1,10 +1,9 @@
-* Actually check whether my artifact is deployed to central, I'm unsure about it...
+* Do a maven central release
 
 # Tasks
 * Tracing and benchmarking with logger instead of `stdout`
 * Retry
 * Timeout method
-* Cache (Guava)
 * Logging methods that take and return `String`
 * Use `gradle`
 
