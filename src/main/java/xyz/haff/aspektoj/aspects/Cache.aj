@@ -4,11 +4,6 @@ import xyz.haff.aspektoj.annotations.Cached;
 import xyz.haff.aspektoj.annotations.CacheKey;
 import xyz.haff.aspektoj.util.CacheMap;
 
-import java.time.Duration;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 // TODO: Support last accessed instead of only last inserted
 
 public aspect Cache {
