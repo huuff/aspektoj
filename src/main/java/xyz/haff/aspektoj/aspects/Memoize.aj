@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public aspect Memoize {
     private final Map<String, Supplier<Object>> MEMOIZATIONS = new HashMap<>();
 
-    public pointcut memoized(Memoized memoized) : call(@Memoized * *.*()) && @annotation(memoized) ;
+    public pointcut memoized(Memoized memoized) : call(@Memoized * *.*()) && @annotation(memoized);
 
     Object around(Memoized memoized): memoized(memoized) {
         var key = thisJoinPoint.getSignature().toShortString();
