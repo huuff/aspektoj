@@ -16,12 +16,27 @@ class CacheTest {
         return new Random().nextInt();
     }
 
+    @Cached("PT10s")
+    public int keyInSecondPosition(String unusedVal, @CacheKey String key) {
+        return new Random().nextInt();
+    }
+
     @Test
     void correctlyCached() {
         var firstResult = cachedMethod("Key");
         var secondResult = cachedMethod("Key");
 
         assertEquals(firstResult, secondResult);
+    }
+
+    @Test
+    void keyNotInFirstPositionCorrectlyCached() {
+        var firstResult = keyInSecondPosition("unused1", "Key");
+        var secondResult = keyInSecondPosition("unused2", "Key");
+        var differentResult = keyInSecondPosition("unused3", "Key2");
+
+        assertEquals(firstResult, secondResult);
+        assertNotEquals(firstResult, differentResult);
     }
 
     @Test

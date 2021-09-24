@@ -1,9 +1,12 @@
 package xyz.haff.aspektoj.aspects;
 
 import com.google.common.cache.CacheBuilder;
+import org.aspectj.lang.reflect.MethodSignature;
 import xyz.haff.aspektoj.annotations.Cached;
 import xyz.haff.aspektoj.annotations.CacheKey;
+import xyz.haff.aspektoj.util.FindAnnotatedArgument;
 
+import java.lang.annotation.Annotation;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,11 +18,11 @@ import java.util.concurrent.ExecutionException;
 public aspect Cache {
     private final Map<String, com.google.common.cache.Cache<Object, Object>> CACHES = new HashMap<>();
 
-    public pointcut cached(Cached cached): call(@Cached * *.*(@CacheKey (*), ..)) && @annotation(cached);
+    public pointcut cached(Cached cached): call(@Cached * *.*(.., @CacheKey (*), ..)) && @annotation(cached);
 
     Object around(Cached cached): cached(cached) {
         var method = thisJoinPoint.getSignature().toShortString();
-        var key = thisJoinPoint.getArgs()[0];
+        var key = FindAnnotatedArgument.of(thisJoinPoint, CacheKey.class).getArgument();
 
         if (!CACHES.containsKey(method)) {
             CACHES.put(method, CacheBuilder.newBuilder().expireAfterWrite(Duration.parse(cached.value())).softValues().build());
@@ -31,6 +34,4 @@ public aspect Cache {
             throw new RuntimeException(e);
         }
     }
-
-
 }
