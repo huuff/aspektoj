@@ -6,6 +6,8 @@
 * Use `gradle`
 * Evict cache or else serious memory leaks ensue
 * In `Cached` and `AppendLogContext`, try to make it work with the annotation in any parameter, not just the first one
+* javadocs
+* Try to get jacoco working
 
 # Maybe? Just for practice
 * Security, authentication & authorization
