@@ -1,6 +1,5 @@
 # Tasks
 * Tracing and benchmarking with logger instead of `stdout`
-* Retry
 * Logging methods that take and return `String`
 * Use `gradle`
 * javadocs
