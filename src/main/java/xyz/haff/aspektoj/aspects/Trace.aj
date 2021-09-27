@@ -1,10 +1,14 @@
 package xyz.haff.aspektoj.aspects;
 
-// TODO: Maybe per cflow?
-
 public aspect Trace {
 
-    before(): call(@xyz.haff.aspektoj.annotations.Traced * *.*(..)) {
+    pointcut annotated(): call(@xyz.haff.aspektoj.annotations.Traced * *.*(..));
+
+    pointcut traced(): call(* *.*(..))
+                        && (cflow(annotated()))
+                        && !cflowbelow(adviceexecution() && within(Trace));
+
+    before(): traced() {
         System.out.println("Calling " + thisJoinPoint.getSignature() + "...");
     }
 }
