@@ -1,7 +1,7 @@
 package xyz.haff.aspektoj.aspects;
 
+import org.apache.logging.log4j.ThreadContext;
 import org.junit.jupiter.api.Test;
-import org.slf4j.MDC;
 import xyz.haff.aspektoj.annotations.ContextVar;
 import xyz.haff.aspektoj.annotations.LogContext;
 
@@ -13,14 +13,14 @@ class AppendLogContextTest {
 
     @LogContext
     public void methodWithContext(@ContextVar(CONTEXT_KEY) String contextVar, String unusedParam) {
-        assertTrue(MDC.getCopyOfContextMap().containsKey(CONTEXT_KEY));
-        assertEquals(CONTEXT_VALUE, MDC.getCopyOfContextMap().get(CONTEXT_KEY));
+        assertTrue(ThreadContext.containsKey(CONTEXT_KEY));
+        assertEquals(CONTEXT_VALUE, ThreadContext.get(CONTEXT_KEY));
     }
 
     @Test
     void logContextGetsAppendedWithContextVar() {
         methodWithContext(CONTEXT_VALUE, "");
-        assertNull(MDC.getCopyOfContextMap());
+        assertFalse(ThreadContext.containsKey(CONTEXT_KEY));
     }
 
 }

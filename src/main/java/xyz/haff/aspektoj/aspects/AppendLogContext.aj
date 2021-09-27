@@ -1,7 +1,7 @@
 package xyz.haff.aspektoj.aspects;
 
 
-import org.slf4j.MDC;
+import org.apache.logging.log4j.ThreadContext;
 import xyz.haff.aspektoj.annotations.ContextVar;
 import xyz.haff.aspektoj.annotations.LogContext;
 import xyz.haff.aspektoj.util.FindAnnotatedArgument;
@@ -15,9 +15,9 @@ public aspect AppendLogContext {
     Object around(): logContext() {
         var contextVar = FindAnnotatedArgument.of(thisJoinPoint, ContextVar.class);
 
-        MDC.put(contextVar.getAnnotation().value(), contextVar.getArgument().toString());
+        ThreadContext.put(contextVar.getAnnotation().value(), contextVar.getArgument().toString());
         var result = proceed();
-        MDC.remove(contextVar.getAnnotation().value());
+        ThreadContext.remove(contextVar.getAnnotation().value());
 
         return result;
     }
