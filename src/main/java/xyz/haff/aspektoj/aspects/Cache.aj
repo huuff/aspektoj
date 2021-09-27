@@ -24,14 +24,14 @@ public aspect Cache {
         var method = thisJoinPoint.getSignature().toShortString();
         var key = FindAnnotatedArgument.of(thisJoinPoint, CacheKey.class).getArgument();
 
-        if (!CACHES.containsKey(method)) {
-            CACHES.put(method, CacheBuilder.newBuilder().expireAfterWrite(Duration.parse(cached.value())).softValues().build());
-        }
-
         try {
-            return CACHES.get(method).get(key, () -> proceed(cached));
+            return CACHES.computeIfAbsent(method, (x) -> newCache(cached.value())).get(key, () -> proceed(cached));
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private com.google.common.cache.Cache<Object, Object> newCache(String duration) {
+        return CacheBuilder.newBuilder().expireAfterWrite(Duration.parse(duration)).softValues().build();
     }
 }
