@@ -8,11 +8,10 @@ import xyz.haff.aspektoj.annotations.Traced;
 
 public aspect Trace {
     pointcut annotated(Traced traced): call(@xyz.haff.aspektoj.annotations.Traced * *.*(..)) && @annotation(traced);
-
-    // TODO: Check aspectj in action, there's a more succint way
+    
     pointcut traced(Traced traced): call(* *.*(..))
                         && (cflow(annotated(traced)))
-                        && !cflowbelow(adviceexecution() && within(Trace))
+                        && !within(Trace)
                         ;
 
     before(Traced traced): traced(traced) {
