@@ -10,3 +10,4 @@
 * Transactions
 * Concurrency (Lock acquiring and releasing)
 * Dependency injection
+* Some type of validation?
