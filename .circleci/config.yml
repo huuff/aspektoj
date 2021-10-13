@@ -16,7 +16,7 @@ jobs:
       - attach_workspace:
           at: ./
       - store_artifacts:
-          path: site/apidocs
+          path: site/nonexistent
 
 workflows:
   test:
