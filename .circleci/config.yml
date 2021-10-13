@@ -13,7 +13,7 @@ jobs:
     executor: jdk11
     steps:
       - store_artifacts:
-          path: ./target/site/apidocs
+          path: target/site/apidocs
 
 workflows:
   test:
