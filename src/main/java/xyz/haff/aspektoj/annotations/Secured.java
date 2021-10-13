@@ -6,12 +6,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Indicated that a method can only be used if the logged user (The one in the ThreadLocal of loggedUser in SecurityContext)
- * is the same as `username`
+ * Indicated that a method can only be used if the logged user is a specific one
  */
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Secured {
+    /**
+     * @return The only username wose authentication is acceptable to call this method
+     */
     String username();
 }

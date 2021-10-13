@@ -8,11 +8,13 @@ import java.lang.annotation.Target;
 /**
  * Annotates a method without arguments (Presumably non-deterministic) to make it return the memoized value of a previous
  * execution instead of recalculating it.
- * Takes a value, a ISO-8601 description of a Duration.
  */
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Memoized {
+    /**
+     * @return An ISO-8601 duration for which to memoize the result of the method
+     */
     String value();
 }

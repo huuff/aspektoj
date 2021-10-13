@@ -12,5 +12,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ContextVar {
+    /**
+     * @return The key that will be used in the logged message MDC
+     */
     String value();
 }

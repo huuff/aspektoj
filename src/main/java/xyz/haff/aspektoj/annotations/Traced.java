@@ -6,11 +6,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Logs all calls to a method in the logger specified in `logger` and also to all calls of methods inside of it.
+ * Logs all calls to a method and all calls to methods made during its execution.
  */
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Traced {
+    /**
+     * @return The logger to which the trace info will be logged
+     */
     String logger() default "stdout";
 }

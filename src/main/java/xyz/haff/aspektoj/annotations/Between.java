@@ -13,6 +13,13 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)
 public @interface Between {
+    /**
+     * @return Minimum acceptable value for the annotated parameter
+     */
     int min();
+
+    /**
+     * @return Maximum acceptable value for the annotated parameter
+     */
     int max();
 }

@@ -12,5 +12,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Logged {
+    /**
+     * @return Name of the logger through which this information will be logged
+     */
     String logger() default "stdout";
 }

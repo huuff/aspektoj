@@ -8,15 +8,20 @@ import java.lang.annotation.Target;
 /**
  * Ensures that the method is cached, where the key is a parameter annotated with @CacheKey and the value is the result
  * of the method.
- * Takes a value, a string that represents the duration in ISO-8601 format.
- * Takes a Cached.Type enum, that designates whether to invalidate cache on duration elapsed since insertion or since
- * last access.
  */
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Cached {
+    /**
+     * @return A duration in ISO-8601 format that indicated the amount of time before this cache is invalidated.
+     */
     String value();
+
+    /**
+     * @return The type of cache invalidation strategy to use, whether to invalidate on expired duration after last insertion
+     * or on expiration after last access
+     */
     Type type() default Type.LAST_INSERTED;
 
     enum Type {

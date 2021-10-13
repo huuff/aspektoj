@@ -7,11 +7,13 @@ import java.lang.annotation.Target;
 
 /**
  * Logs the elapsed time since the call of the method until its completion.
- * Takes the name of the logger to use as a parameter.
  */
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Benchmarked {
+    /**
+     * @return Name of the logger through which the information is to be logged
+     */
     String logger() default "stdout";
 }
