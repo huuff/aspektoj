@@ -9,4 +9,9 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface Cached {
     String value();
+    Type type() default Type.LAST_INSERTED;
+
+    enum Type {
+        LAST_INSERTED, LAST_ACCESSED
+    }
 }

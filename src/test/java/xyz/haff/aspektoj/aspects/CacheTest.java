@@ -11,12 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CacheTest {
 
-    @Cached("PT10s")
+    @Cached(value="PT10s", type=Cached.Type.LAST_INSERTED)
     public int cachedMethod(@CacheKey String key) {
         return new Random().nextInt();
     }
 
-    @Cached("PT10s")
+    @Cached(value="PT10s", type=Cached.Type.LAST_ACCESSED)
     public int keyInSecondPosition(String unusedVal, @CacheKey String key) {
         return new Random().nextInt();
     }

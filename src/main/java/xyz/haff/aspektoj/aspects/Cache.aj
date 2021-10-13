@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-// TODO: Support last accessed instead of only last inserted
 // Do not press C-M O or you'll expend hours debugging why it doesn't work because idea removed the CacheKey import
 
 aspect Cache {
@@ -23,13 +22,21 @@ aspect Cache {
         var key = new AnnotatedArgument<>(thisJoinPoint, CacheKey.class).getArgument();
 
         try {
-            return CACHES.computeIfAbsent(method, (x) -> newCache(cached.value())).get(key, () -> proceed(cached));
+            return CACHES.computeIfAbsent(method, (x) -> newCache(cached.value(), cached.type())).get(key, () -> proceed(cached));
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private com.google.common.cache.Cache<Object, Object> newCache(String duration) {
-        return CacheBuilder.newBuilder().expireAfterWrite(Duration.parse(duration)).softValues().build();
+    private com.google.common.cache.Cache<Object, Object> newCache(String duration, Cached.Type type) {
+        var builder = CacheBuilder.newBuilder().softValues();
+        var durationObject = Duration.parse(duration);
+
+        if (type == Cached.Type.LAST_INSERTED)
+            return builder.expireAfterWrite(durationObject).build();
+        else if (type == Cached.Type.LAST_ACCESSED)
+            return builder.expireAfterAccess(durationObject).build();
+        else
+            throw new AssertionError("Using cache type " + type + " which is not considered in the aspect. This is a library error.");
     }
 }
