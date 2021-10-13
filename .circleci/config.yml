@@ -8,9 +8,19 @@ executors:
     docker:
       - image: cimg/openjdk:11.0.12
 
+jobs:
+  store_javadoc:
+    executor: jdk11
+    steps:
+      - store_artifacts:
+          path: ./target/site/apidocs
+
 workflows:
   test:
     jobs:
       - maven/test:
           command: "-X verify javadoc:javadoc"
           executor: jdk11
+      - store_javadoc:
+          requires:
+            - maven/test
