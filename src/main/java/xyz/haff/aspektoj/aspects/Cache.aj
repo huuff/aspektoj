@@ -4,7 +4,7 @@ import com.google.common.cache.CacheBuilder;
 import org.aspectj.lang.reflect.MethodSignature;
 import xyz.haff.aspektoj.annotations.Cached;
 import xyz.haff.aspektoj.annotations.CacheKey;
-import xyz.haff.aspektoj.util.FindAnnotatedArgument;
+import xyz.haff.aspektoj.util.AnnotatedArgument;
 
 import java.lang.annotation.Annotation;
 import java.time.Duration;
@@ -22,7 +22,7 @@ public aspect Cache {
 
     Object around(Cached cached): cached(cached) {
         var method = thisJoinPoint.getSignature().toShortString();
-        var key = FindAnnotatedArgument.of(thisJoinPoint, CacheKey.class).getArgument();
+        var key = new AnnotatedArgument<>(thisJoinPoint, CacheKey.class).getArgument();
 
         try {
             return CACHES.computeIfAbsent(method, (x) -> newCache(cached.value())).get(key, () -> proceed(cached));
