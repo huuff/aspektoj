@@ -7,3 +7,5 @@ This was a toy project to learn AspectJ, most of these aspects aren't really sui
 
 ## Issues beware
 Support of AOP is almost nonexistent, IDEs and the own Aspectj compiler aren't very good at guiding beginners to solve issues. Particularly, be very careful when optimizing imports, as idea will remove annotations imports from aspects that deems unused, but that are actually needed. The Aspectj compiler won't complain either, but your aspects won't ever get weaved.
+
+Also, using autocompletion will completely fuck an annotation file at some points.
