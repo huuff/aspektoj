@@ -2,8 +2,8 @@ package xyz.haff.aspektoj.aspects;
 
 import xyz.haff.aspektoj.annotations.Timed;
 import xyz.haff.aspektoj.exceptions.RuntimeTimeoutException;
-import xyz.haff.aspektoj.util.DurationUtil;
 
+import java.time.Duration;
 import java.util.concurrent.*;
 
 public aspect Timeout {
@@ -14,7 +14,7 @@ public aspect Timeout {
     Object around(Timed timed): timed(timed) {
         Future<Object> result = executor.submit(() -> proceed(timed));
         try {
-            return result.get(DurationUtil.getNanos(timed.value()), TimeUnit.NANOSECONDS);
+            return result.get(Duration.parse(timed.value()).toNanos(), TimeUnit.NANOSECONDS);
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         } catch (TimeoutException e) {
