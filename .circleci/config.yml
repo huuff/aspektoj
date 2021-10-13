@@ -12,4 +12,5 @@ workflows:
   test:
     jobs:
       - maven/test:
+          command: "-X verify javadoc:javadoc"
           executor: jdk11
