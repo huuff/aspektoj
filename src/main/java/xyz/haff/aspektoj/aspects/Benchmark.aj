@@ -1,5 +1,8 @@
 package xyz.haff.aspektoj.aspects;
 
+import org.apache.logging.log4j.LogManager;
+import xyz.haff.aspektoj.annotations.Benchmarked;
+
 import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -9,9 +12,11 @@ public aspect Benchmark {
     private static final DateTimeFormatter SECONDS_FORMATTER = DateTimeFormatter.ofPattern("ss's' SSS'ms'");
     private static final DateTimeFormatter MINUTES_FORMATTER = DateTimeFormatter.ofPattern("mm:ss.SSS");
 
-    Object around(): call(@xyz.haff.aspektoj.annotations.Benchmarked * *.*(..)) {
+    pointcut annotated(Benchmarked benchmarked): call(@xyz.haff.aspektoj.annotations.Benchmarked * *.*(..)) && @annotation(benchmarked);
+
+    Object around(Benchmarked benchmarked): annotated(benchmarked) {
         var start = System.nanoTime();
-        var result = proceed();
+        var result = proceed(benchmarked);
         var end = System.nanoTime();
 
         var elapsedNanos = end - start;
@@ -29,7 +34,8 @@ public aspect Benchmark {
         else
             formatter = MINUTES_FORMATTER;
 
-        System.out.println(thisJoinPoint.getSignature().toShortString() + " took " + fromMidnight.format(formatter));
+        var logger = LogManager.getLogger(benchmarked.logger());
+        logger.info(thisJoinPoint.getSignature().toShortString() + " took " + fromMidnight.format(formatter));
 
         return result;
     }

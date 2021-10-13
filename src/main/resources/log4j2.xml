@@ -2,7 +2,7 @@
 <Configuration>
     <Appenders>
         <Console name="LogToConsole" target="SYSTEM_OUT">
-            <PatternLayout pattern="%x%msg%n"/>
+            <PatternLayout pattern="%notEmpty{%x}%msg%n"/>
         </Console>
     </Appenders>
     <Loggers>

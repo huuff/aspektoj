@@ -1,5 +1,4 @@
 # Tasks
-* Benchmarking with logger instead of `stdout`
 * Logging methods that take and return `String`
 * Use `gradle`
 * javadocs

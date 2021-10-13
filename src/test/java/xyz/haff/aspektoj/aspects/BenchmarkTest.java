@@ -1,10 +1,14 @@
 package xyz.haff.aspektoj.aspects;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
-import xyz.haff.aspektoj.TestUtils;
+import org.mockito.MockedStatic;
 import xyz.haff.aspektoj.annotations.Benchmarked;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.*;
 
 class BenchmarkTest {
 
@@ -13,14 +17,15 @@ class BenchmarkTest {
 
     @Test
     void testBenchmarked() {
-        var testOut = TestUtils.redirectStdout();
+        try (MockedStatic<LogManager> logManager = mockStatic(LogManager.class)) {
+            var mockLogger = mock(Logger.class);
+            logManager.when(() -> LogManager.getLogger(anyString())).thenReturn(mockLogger);
 
-        benchmarkedMethod();
+            benchmarkedMethod();
 
-        assertEquals(
-                "BenchmarkTest.benchmarkedMethod() took 000ms\n",
-                testOut.toString()
-        );
+            verify(mockLogger).info(eq("BenchmarkTest.benchmarkedMethod() took 000ms"));
+
+        }
     }
 
 }
