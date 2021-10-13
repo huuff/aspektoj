@@ -15,11 +15,11 @@ jobs:
       - checkout
       - attach_workspace:
           at: ./
-      - run:
-          name: Sanity checking
-          command: find .
+      #- run:
+          #name: Sanity checking
+          #command: find .
       - store_artifacts:
-          path: site/apidocs
+          path: target/site/apidocs
 
 workflows:
   test:
