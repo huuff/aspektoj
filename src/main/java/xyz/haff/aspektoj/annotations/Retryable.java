@@ -6,6 +6,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.List;
 
+/**
+ * Indicates that a method is to be retried if any of the exceptions in the `exceptions` parameter is thrown.
+ * The `times` parameter defines the number of times to retry
+ */
+
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Retryable {
