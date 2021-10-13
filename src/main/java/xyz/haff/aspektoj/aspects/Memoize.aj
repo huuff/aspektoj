@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public aspect Memoize {
+aspect Memoize {
     private final Map<String, Supplier<Object>> MEMOIZATIONS = new HashMap<>();
 
     public pointcut memoized(Memoized memoized) : call(@Memoized * *.*()) && @annotation(memoized);

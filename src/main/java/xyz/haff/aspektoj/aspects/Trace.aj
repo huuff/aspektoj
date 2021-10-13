@@ -6,7 +6,7 @@ import org.apache.logging.log4j.ThreadContext;
 import xyz.haff.aspektoj.annotations.Traced;
 
 
-public aspect Trace {
+aspect Trace {
     pointcut annotated(Traced traced): call(@xyz.haff.aspektoj.annotations.Traced * *.*(..)) && @annotation(traced);
     
     pointcut traced(Traced traced): call(* *.*(..))
