@@ -24,7 +24,6 @@ class BenchmarkTest {
             benchmarkedMethod();
 
             verify(mockLogger).info(eq("BenchmarkTest.benchmarkedMethod() took 000ms"));
-
         }
     }
 
