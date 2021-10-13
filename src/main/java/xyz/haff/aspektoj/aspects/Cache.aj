@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutionException;
 
 // Do not press C-M O or you'll expend hours debugging why it doesn't work because idea removed the CacheKey import
 
-aspect Cache {
+public aspect Cache {
     private final Map<String, com.google.common.cache.Cache<Object, Object>> CACHES = new HashMap<>();
 
     public pointcut cached(Cached cached): call(@Cached * *.*(.., @CacheKey (*), ..)) && @annotation(cached);

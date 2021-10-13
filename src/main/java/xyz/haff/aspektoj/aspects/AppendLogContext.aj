@@ -9,7 +9,7 @@ import xyz.haff.aspektoj.util.AnnotatedArgument;
 /**
  * Appends the parameter defined in the annotation to the log context and then removes it
  */
-aspect AppendLogContext {
+public aspect AppendLogContext {
     public pointcut logContext(): call(@LogContext * *.*(@ContextVar (*), ..));
 
     Object around(): logContext() {

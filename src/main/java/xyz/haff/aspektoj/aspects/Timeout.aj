@@ -6,7 +6,7 @@ import xyz.haff.aspektoj.exceptions.RuntimeTimeoutException;
 import java.time.Duration;
 import java.util.concurrent.*;
 
-aspect Timeout {
+public aspect Timeout {
     private final ExecutorService executor = Executors.newCachedThreadPool();
 
     public pointcut timed(Timed timed) : execution(@Timed * *.*(..)) && @annotation(timed);

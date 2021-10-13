@@ -7,7 +7,7 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-aspect Benchmark {
+public aspect Benchmark {
     private static final DateTimeFormatter MILLIS_FORMATTER = DateTimeFormatter.ofPattern("SSS'ms'");
     private static final DateTimeFormatter SECONDS_FORMATTER = DateTimeFormatter.ofPattern("ss's' SSS'ms'");
     private static final DateTimeFormatter MINUTES_FORMATTER = DateTimeFormatter.ofPattern("mm:ss.SSS");

@@ -4,7 +4,7 @@ import xyz.haff.aspektoj.annotations.Retryable;
 
 import java.util.Arrays;
 
-aspect Retry {
+public aspect Retry {
 
     public pointcut retryable(Retryable retryable) : call(@Retryable * *.*(..)) && @annotation(retryable);
 

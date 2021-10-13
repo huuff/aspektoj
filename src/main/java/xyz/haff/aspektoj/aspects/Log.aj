@@ -3,7 +3,7 @@ package xyz.haff.aspektoj.aspects;
 import org.apache.logging.log4j.LogManager;
 import xyz.haff.aspektoj.annotations.Logged;
 
-aspect Log {
+public aspect Log {
 
     pointcut annotated(Logged logged): call(@xyz.haff.aspektoj.annotations.Logged * *.*(..)) && @annotation(logged);
 
