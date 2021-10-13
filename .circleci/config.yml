@@ -15,9 +15,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: ./
-      #- run:
-          #name: Sanity checking
-          #command: find .
       - store_artifacts:
           path: target/site/apidocs
 
