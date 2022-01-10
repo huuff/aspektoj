@@ -118,6 +118,14 @@
                     <complianceLevel>${maven.compiler.target}</complianceLevel>
                     <source>${maven.compiler.target}</source>
                     <target>${maven.compiler.target}</target>
+                    <sources>
+                        <source>
+                            <basedir>src/main/aspectj</basedir>
+                            <includes>
+                                <include>**/*.aj</include>
+                            </includes>
+                        </source>
+                    </sources>
                 </configuration>
                 <executions>
                     <execution>
