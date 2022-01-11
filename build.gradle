@@ -7,11 +7,11 @@ repositories {
   mavenCentral()
 }
 
-def java_version = "11"
-def aspectj_version = "1.9.7"
-def junit_version = "5.7.2"
-def log4j_version = "2.14.1"
-def mockito_version = "3.12.4"
+def javaVersion = "11"
+def aspectjVersion = "1.9.7"
+def junitVersion = "5.7.2"
+def log4jVersion = "2.17.0"
+def mockitoVersion = "3.12.4"
 
 def aspects = new ArrayList();
 fileTree("src/main/aspectj/xyz/haff/aspektoj/aspects").each {
@@ -19,8 +19,8 @@ fileTree("src/main/aspectj/xyz/haff/aspektoj/aspects").each {
 }
 
 compileJava   {
-  sourceCompatibility = java_version
-  targetCompatibility = java_version
+  sourceCompatibility = javaVersion
+  targetCompatibility = javaVersion
   ajc {
       enabled = true 
       options {
@@ -39,19 +39,19 @@ compileTestJava {
 }
 
 aspectj {
-  version = aspectj_version
+  version = aspectjVersion
 }
 
 dependencies {
   implementation "org.aspectj:aspectjrt:1.9.7"
-  implementation "org.apache.logging.log4j:log4j-api:${log4j_version}"
-  implementation "org.aspectj:aspectjtools:${aspectj_version}"
-  implementation "org.apache.logging.log4j:log4j-core:${log4j_version}"
+  implementation "org.apache.logging.log4j:log4j-api:${log4jVersion}"
+  implementation "org.aspectj:aspectjtools:${aspectjVersion}"
+  implementation "org.apache.logging.log4j:log4j-core:${log4jVersion}"
   implementation "com.google.guava:guava:30.1.1-jre"
-  testImplementation "org.junit.jupiter:junit-jupiter-engine:${junit_version}"
+  testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
   testImplementation "org.mockito:mockito-junit-jupiter:2.23.0"
-  testImplementation "org.mockito:mockito-core:3.12.4"
-  testImplementation "org.mockito:mockito-inline:3.12.4"
+  testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+  testImplementation "org.mockito:mockito-inline:${mockitoVersion}"
 }
 
 test {
