@@ -1,6 +1,6 @@
 plugins {
   id "java"
-  id "io.freefair.aspectj" version "5.3.0"
+  id "io.freefair.aspectj.post-compile-weaving" version "5.3.0"
 }
 
 repositories {
@@ -13,9 +13,29 @@ def junit_version = "5.7.2"
 def log4j_version = "2.14.1"
 def mockito_version = "3.12.4"
 
+def aspects = new ArrayList();
+fileTree("src/main/aspectj/xyz/haff/aspektoj/aspects").each {
+  aspects.add(it.toString())
+}
+
 compileJava   {
   sourceCompatibility = java_version
   targetCompatibility = java_version
+  ajc {
+      enabled = true 
+      options {
+          compilerArgs = aspects
+      }
+  }
+}
+
+compileTestJava {
+  ajc {
+    enabled = true
+    options {
+      compilerArgs = aspects
+    }
+  }
 }
 
 aspectj {
@@ -44,3 +64,4 @@ test {
   }
   useJUnitPlatform()
 }
+
